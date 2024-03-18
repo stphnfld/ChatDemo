@@ -2,19 +2,15 @@ package com.floods.ChatDemo.service;
 
 import com.floods.ChatDemo.model.Message;
 import com.floods.ChatDemo.repository.MessageRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
-
 import java.util.List;
 
 @Service
 public class MessageService {
-
     private final MessageRepository messageRepository;
 
-    @Autowired
     public MessageService(MessageRepository messageRepository) {
         this.messageRepository = messageRepository;
     }
@@ -29,9 +25,9 @@ public class MessageService {
         return messageRepository.save(message);
     }
 
-    // Method to retrieve a list of messages by channel
-    public List<Message> getMessagesByChannel(@NonNull String channel) {
-        return messageRepository.findByChannel(channel);
+    // Method to retrieve a list of messages by channelId
+    public List<Message> getMessagesByChannelId(@NonNull Long channelId) {
+        return messageRepository.findByChannelId(channelId);
     }
 
     // Method to get a message by its ID

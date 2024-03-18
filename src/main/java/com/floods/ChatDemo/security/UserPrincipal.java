@@ -13,7 +13,14 @@ public class UserPrincipal implements UserDetails {
     private Collection<? extends GrantedAuthority> authorities;
 
     // Constructor, getters, and setters
+    public UserPrincipal(String username, String password, Collection<? extends GrantedAuthority> authorities) {
+        this.username = username;
+        this.password = password;
+        this.authorities = authorities;
+    }
 
+    
+    
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;

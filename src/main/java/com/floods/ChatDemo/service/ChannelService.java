@@ -2,7 +2,6 @@ package com.floods.ChatDemo.service;
 
 import com.floods.ChatDemo.model.Channel;
 import com.floods.ChatDemo.repository.ChannelRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +13,6 @@ public class ChannelService {
 
     private final ChannelRepository channelRepository;
 
-    @Autowired
     public ChannelService(ChannelRepository channelRepository) {
         this.channelRepository = channelRepository;
     }
@@ -47,6 +45,11 @@ public class ChannelService {
     // Method to delete a channel
     public void deleteChannel(@NonNull Long id) {
         channelRepository.deleteById(id);
+    }
+
+    
+    public Channel save(@NonNull Channel channel) {
+        return channelRepository.save(channel);
     }
 
     // Additional methods as needed for your application can be added here

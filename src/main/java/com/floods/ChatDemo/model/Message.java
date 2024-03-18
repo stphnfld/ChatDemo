@@ -6,7 +6,6 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "messages")
 public class Message {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,22 +20,23 @@ public class Message {
     @Column(nullable = false)
     private String sender;
 
-    // Assuming the channel is referenced by its name
-    @Column(nullable = false)
-    private String channel;
+    // Referencing the channel by its ID
+    @Column(name = "channel_id", nullable = false)
+    private Long channelId;
 
     public Message() {
         // JPA requires a no-arg constructor
     }
 
-    public Message(String content, LocalDateTime timestamp, String sender, String channel) {
+    public Message(String content, LocalDateTime timestamp, String sender, Long channelId) {
         this.content = content;
         this.timestamp = timestamp;
         this.sender = sender;
-        this.channel = channel;
+        this.channelId = channelId;
     }
 
     // Getters and Setters
+
     public Long getId() {
         return id;
     }
@@ -69,14 +69,13 @@ public class Message {
         this.sender = sender;
     }
 
-    public String getChannel() {
-        return channel;
+    public Long getChannelId() {
+        return channelId;
     }
 
-    public void setChannel(String channel) {
-        this.channel = channel;
+    public void setChannelId(Long channelId) {
+        this.channelId = channelId;
     }
 
     // Override methods like equals(), hashCode(), and toString()
-
 }
